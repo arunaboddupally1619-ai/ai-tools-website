@@ -1,1 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AI Tools Hub</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: linear-gradient(135deg, #5b5ff7, #8b5cf6);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      opacity: 0.9;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 45px 20px 30px;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #687386;
+      font-size: 17px;
+      margin-bottom: 25px;
+    }
+
+    .search {
+      width: 90%;
+      max-width: 650px;
+      padding: 15px 20px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      font-size: 16px;
+      outline: none;
+      background: white;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px 20px 30px;
+    }
+
+    .category {
+      border: none;
+      padding: 10px 18px;
+      border-radius: 20px;
+      background: white;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .category:hover {
+      background: #635bff;
+      color: white;
+    }
+
+    .tools {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #697386;
+      line-height: 1.5;
+      font-size: 14px;
+      min-height: 63px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 12px 0;
+      padding: 5px 10px;
+      background: #eeeefc;
+      color: #5751d9;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+
+    .visit {
+      display: inline-block;
+      text-decoration: none;
+      background: #635bff;
+      color: white;
+      padding: 9px 15px;
+      border-radius: 9px;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      margin-top: 30px;
+      background: #172033;
+      color: white;
+    }
+
+    footer p {
+      opacity: 0.7;
+      margin-top: 8px;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 40px;
+      display: none;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🤖 AI Tools Hub</h1>
+    <p>Discover powerful AI tools in one place</p>
+  </header>
+
+  <section class="hero">
+    <h2>All AI Tools in One Place</h2>
+    <p>Find the perfect AI tool for your work, creativity and everyday life.</p>
+
+    <input
+      type="text"
+      id="search"
+      class="search"
+      placeholder="🔍 Search AI tools..."
+      onkeyup="searchTools()"
+    >
+  </section>
+
+  <div class="categories">
+    <button class="category" onclick="filterTools('all')">All</button>
+    <button class="category" onclick="filterTools('writing')">✍️ Writing</button>
+    <button class="category" onclick="filterTools('image')">🎨 Images</button>
+    <button class="category" onclick="filterTools('video')">🎬 Video</button>
+    <button class="category" onclick="filterTools('coding')">💻 Coding</button>
+    <button class="category" onclick="filterTools('audio')">🎵 Audio</button>
+  </div>
+
+  <main class="tools" id="tools">
+
+    <div class="card" data-category="writing">
+      <div class="icon">💬</div>
+      <h3>ChatGPT</h3>
+      <p>AI assistant for writing, learning, brainstorming, coding and more.</p>
+      <span class="tag">Writing</span><br>
+      <a class="visit" href="https://chatgpt.com" target="_blank">Visit Tool →</a>
+    </div>
+
+    <div class="card" data-category="writing">
+      <div class="icon">✨</div>
+      <h3>Claude</h3>
+      <p>Powerful AI assistant for writing, analysis, research and reasoning.</p>
+      <span class="tag">Writing</span><br>
+      <a class="visit" href="https://claude.ai" target="_blank">Visit Tool →</a>
+    </div>
+
+    <div class="card" data-category="image">
+      <div class="icon">🎨</div>
+      <h3>Midjourney</h3>
+      <p>Create beautiful AI-generated images from simple text descriptions.</p>
+      <span class="tag">Images</span><br>
+      <a class="visit" href="https://www.midjourney.com" target="_blank">Visit Tool →</a>
+    </div>
+
+    <div class="card" data-category="image">
+      <div class="icon">🖼️</div>
+      <h3>Adobe Firefly</h3>
+      <p>Create and edit creative images using generative AI.</p>
+      <span class="tag">Images</span><br>
+      <a class="visit" href="https://firefly.adobe.com" target="_blank">Visit Tool →</a>
+    </div>
+
+    <div class="card" data-category="video">
+      <div class="icon">🎬</div>
+      <h3>Runway</h3>
+      <p>AI-powered tools for generating and editing creative videos.</p>
+      <span class="tag">Video</span><br>
+      <a class="visit" href="https://runwayml.com" target="_blank">Visit Tool →</a>
+    </div>
+
+    <div class="card" data-category="video">
+      <div class="icon">🎥</div>
+      <h3>Pika</h3>
+      <p>Create imaginative AI videos from text and images.</p>
+      <span class="tag">Video</span><br>
+      <a class="visit" href="https://pika.art" target="_blank">Visit Tool →</a>
+    </div>
+
+    <div class="card" data-category="coding">
+      <div class="icon">💻</div>
+      <h3>GitHub Copilot</h3>
+      <p>AI coding assistant that helps developers write and understand code.</p>
+      <span class="tag">Coding</span><br>
+      <a class="visit" href="https://github.com/features/copilot" target="_blank">Visit Tool →</a>
+    </div>
+
+    <div class="card" data-category="coding">
+      <div class="icon">⚡</div>
+      <h3>Cursor</h3>
+      <p>An AI-powered code editor designed to make programming faster.</p>
+      <span class="tag">Coding</span><br>
+      <a class="visit" href="https://www.cursor.com" target="_blank">Visit Tool →</a>
+    </div>
+
+    <div class="card" data-category="audio">
+      <div class="icon">🎵</div>
+      <h3>ElevenLabs</h3>
+      <p>Generate realistic AI voices and speech for creative projects.</p>
+      <span class="tag">Audio</span><br>
+      <a class="visit" href="https://elevenlabs.io" target="_blank">Visit Tool →</a>
+    </div>
+
+    <div class="card" data-category="audio">
+      <div class="icon">🎶</div>
+      <h3>Suno</h3>
+      <p>Create music and songs with the help of artificial intelligence.</p>
+      <span class="tag">Audio</span><br>
+      <a class="visit" href="https://suno.com" target="_blank">Visit Tool →</a>
+    </div>
+
+  </main>
+
+  <div class="no-results" id="noResults">
+    <h3>No AI tools found 😕</h3>
+    <p>Try another search.</p>
+  </div>
+
+  <footer>
+    <h3>🤖 AI Tools Hub</h3>
+    <p>Discover the best AI tools in one modern website.</p>
+  </footer>
+
+  <script>
+    function searchTools() {
+      const search = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+      const cards = document.querySelectorAll(".card");
+      let found = 0;
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+
+        if (text.includes(search)) {
+          card.style.display = "block";
+          found++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      document.getElementById("noResults").style.display =
+        found === 0 ? "block" : "none";
+    }
+
+    function filterTools(category) {
+      const cards = document.querySelectorAll(".card");
+
+      cards.forEach(card => {
+        if (
+          category === "all" ||
+          card.dataset.category === category
+        ) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      document.getElementById("search").value = "";
+      document.getElementById("noResults").style.display = "none";
+    }
+  </script>
+
+</body>
+  </html>
 
